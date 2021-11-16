@@ -26,22 +26,18 @@ public class AdminLoginScenarioTest {
     @Test
     public void myFirstTest() {
         driver.navigate().to("http://localhost/linecart/admin/login.php");
+
         // находим веб элемент
         WebElement usernameInputElement = driver.findElement(By.name("username"));
         WebElement passwordInputElement = driver.findElement(By.name("password"));
         WebElement loginButtonElement = driver.findElement(By.tagName("button"));
 
-
-
-
         // в найденый input(поле ввода) элемент записываем текст
         usernameInputElement.sendKeys("admin");
         passwordInputElement.sendKeys("00000000");
+
+        // Нажимаем на кнопку
         loginButtonElement.click();
-
-
-
-//        wait.until(urlContains("search?"));
     }
 
     @AfterAll
