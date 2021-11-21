@@ -25,7 +25,7 @@ public class MyFirstTest {
 
     @Test
     public void myFirstTest() {
-        driver.navigate().to("http://www.google.com");
+        driver.get("http://www.google.com");
         driver.findElement(By.name("q")).sendKeys("webdriver");
         driver.findElement(By.tagName("form")).submit();
         wait.until(urlContains("search?"));

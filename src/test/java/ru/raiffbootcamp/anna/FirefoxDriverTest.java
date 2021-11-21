@@ -1,26 +1,15 @@
 package ru.raiffbootcamp.anna;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
-import java.time.Duration;
-
-import static org.openqa.selenium.support.ui.ExpectedConditions.urlContains;
-
-public class AdminLoginScenarioTest {
-    private static WebDriver driver;
-    private static WebDriverWait wait;
-
+public class FirefoxDriverTest extends BaseTest {
     @BeforeAll
     public static void start() {
-        driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        driver = new FirefoxDriver();
     }
 
     @Test
@@ -38,13 +27,5 @@ public class AdminLoginScenarioTest {
 
         // Нажимаем на кнопку
         loginButtonElement.click();
-
-    }
-
-
-    @AfterAll
-    public static void finish() {
-        driver.quit();
-        driver = null;
     }
 }
