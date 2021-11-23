@@ -20,10 +20,8 @@ public class Lesson7 extends BaseTest {
     public void recurOpenNextMenuItem(){
         wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.tagName("h1")));
         try {
-            WebElement nextMenuItemLink = driver.findElement(By.cssSelector("li.selected+li a"));
-            String nextMenuItemUrl = nextMenuItemLink.getAttribute("href");
-            driver.get(nextMenuItemUrl);
-
+            WebElement nextMenuItem = driver.findElement(By.cssSelector("li.selected+li"));
+            nextMenuItem.click();
             this.recurOpenNextMenuItem();
         } catch (NoSuchElementException exception) {
             // Последний пункт списка
