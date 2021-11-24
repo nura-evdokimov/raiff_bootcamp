@@ -17,6 +17,7 @@ public class Lesson8 extends BaseTest {
         cardsForAllProducts.forEach(Lesson8::checkForCardSticker);
     }
     public static void checkForCardSticker(WebElement card){
-        Assertions.assertDoesNotThrow(() -> card.findElement(By.className("sticker")));
+        List<WebElement> stickersCard = card.findElements(By.className("sticker"));
+        Assertions.assertTrue(stickersCard.size() == 1);
     }
 }
