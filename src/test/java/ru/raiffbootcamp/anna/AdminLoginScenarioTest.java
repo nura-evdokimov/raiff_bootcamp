@@ -25,7 +25,7 @@ public class AdminLoginScenarioTest {
 
     @Test
     public void myFirstTest() {
-        driver.navigate().to("http://localhost/litecart/admin/?app=countries&doc=countries");
+        driver.navigate().to("http://localhost/litecart/admin/login.php");
 
         // находим веб элемент
         WebElement usernameInputElement = driver.findElement(By.name("username"));
