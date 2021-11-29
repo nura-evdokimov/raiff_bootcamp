@@ -43,8 +43,9 @@ public class Lesson9 extends BaseTest {
             System.out.println("Visit url: " + countryUrl);
             driver.get(countryUrl);
 
-            List<WebElement> zoneNameInputs = driver.findElements(By.cssSelector("input[type='hidden'][name$='[name]']"));
-            List<String> zoneNames = this.toStringListByAttribute(zoneNameInputs, "value");
+            List<WebElement> zoneNameInputs = driver
+                    .findElements(By.cssSelector("table#table-zones tr:not(:last-child) td:nth-child(3)"));
+            List<String> zoneNames = this.toStringListByAttribute(zoneNameInputs, "textContent");
 
             this.checkListAlphabetically(zoneNames);
         }
