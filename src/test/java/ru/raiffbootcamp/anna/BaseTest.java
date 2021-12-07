@@ -26,6 +26,10 @@ public class BaseTest {
         driver = null;
     }
 
+    public void visitMainCustomerPage() {
+        driver.get("http://localhost/litecart/en/");
+    }
+
     public void loginToAdminPanel() {
         driver.get("http://localhost/litecart/admin/login.php");
         // находим веб элемент
