@@ -88,9 +88,15 @@ public class Lesson10 {
         Assertions.assertTrue(Integer.parseInt(campaignPrice.getCssValue("font-weight")) >= 700);
 
         // Проверяем размер шрифта
-        String regularPriceFontSize = regularPrice.getCssValue("font-size");
-        String campaignPriceFontSize = campaignPrice.getCssValue("font-size");
-        Assertions.assertTrue(campaignPriceFontSize.compareTo(regularPriceFontSize) > 0);
+        String regularPriceFontSize = regularPrice
+                .getCssValue("font-size").replaceAll("px", "");
+        String campaignPriceFontSize = campaignPrice.
+                getCssValue("font-size").replaceAll("px", "");
+
+        float regularPriceSize = Float.parseFloat(regularPriceFontSize);
+        float campaignPriceSize = Float.parseFloat(campaignPriceFontSize);
+
+        Assertions.assertTrue(regularPriceSize < campaignPriceSize);
     }
 
     public void checkElementGrayColor(WebElement el) {
