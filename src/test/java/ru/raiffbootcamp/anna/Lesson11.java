@@ -2,16 +2,16 @@ package ru.raiffbootcamp.anna;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-
-import java.time.Duration;
 
 
 public class Lesson11 extends BaseTest {
     @Test
-    public void CreateAccount() throws InterruptedException {
+    public void CreateAccount() {
         // находим веб элемент
         driver.get("http://localhost/litecart/en/create_account");
         WebElement firstName = driver.findElement(By.cssSelector("[name=firstname]"));
@@ -30,13 +30,17 @@ public class Lesson11 extends BaseTest {
         WebElement city = driver.findElement(By.cssSelector("[name=city]"));
         city.sendKeys("Honolulu");
 
-        WebElement country = driver.findElement(By.cssSelector("[name=country_code]"));
-        Select countryCode = new Select(country);
-        countryCode.selectByValue("US");
+        WebElement countrySelect = driver.findElement(By.cssSelector(".select2-selection__rendered"));
+        countrySelect.click();
+        wait.until(ExpectedConditions
+                .presenceOfElementLocated(By.cssSelector("li[id$='-US']")));
+        driver.findElement(By.cssSelector("li[id$='-US']")).click();
 
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("option[value=HI]")));
-        WebElement zoneStateProvince = driver.findElement(By.cssSelector("select[name=zone_code]"));
-        Select state= new Select(zoneStateProvince);
+
+        WebElement zoneSelect = driver.findElement(By.cssSelector("select[name=zone_code]"));
+        zoneSelect.click();
+        Select state= new Select(zoneSelect);
         state.selectByValue("HI");
 
         String emailAddress = Math.round(Math.random() * 10000) + "az@test.ru";
